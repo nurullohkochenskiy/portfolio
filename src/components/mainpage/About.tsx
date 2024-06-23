@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useShowContentStore } from "@/store/showContentStore";
+
 const fadeInAnimationVariants = {
   initial: {
     opacity: 0,
@@ -13,10 +14,11 @@ const fadeInAnimationVariants = {
     y: 0,
   },
 };
+
 const About = () => {
   const showContent = useShowContentStore((state) => state.showContent);
   return (
-    <section id="about" className="container mx-auto px-4 ">
+    <section id="about" className="container mx-auto px-4">
       <motion.h2
         variants={fadeInAnimationVariants}
         initial="initial"
@@ -60,10 +62,10 @@ const About = () => {
             experience working with popular programming languages and frameworks
             including HTML, CSS, JavaScript, TypeScript, React, Next.js,
             Tailwind CSS, and Bootstrap. I completed a comprehensive React.js
-            course at the "Najot Ta'lim" educational center. In addition to my
-            technical skills, I am proficient in multiple languages. I have
-            advanced proficiency in both English and Uzbek, and I am
-            conversational in Russian (B1 level).
+            course at the &quot;Najot Ta&apos;lim&quot; educational center. In
+            addition to my technical skills, I am proficient in multiple
+            languages. I have advanced proficiency in both English and Uzbek,
+            and I am conversational in Russian (B1 level).
           </p>
         </motion.div>
       </div>

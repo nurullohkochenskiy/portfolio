@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../../styles/Services.module.css";
 import { useShowContentStore } from "@/store/showContentStore";
 import { animate, motion } from "framer-motion";
+
 const fadeInAnimationVariants = {
   initial: {
     opacity: 0,
@@ -14,6 +15,7 @@ const fadeInAnimationVariants = {
     y: 0,
   },
 };
+
 const Services = () => {
   const showContent = useShowContentStore((state) => state.showContent);
 
@@ -125,9 +127,9 @@ const Services = () => {
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              Integrate third-party APIs to enhance your website's
+              Integrate third-party APIs to enhance your website&apos;s
               functionality, providing features like social media integration,
-              payment pr ocessing, and more.
+              payment processing, and more.
             </p>
           </div>
 
@@ -185,7 +187,7 @@ const Services = () => {
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
               Comprehensive bug fixing and troubleshooting services to ensure
-              your website runs smoothly
+              your website runs smoothly.
             </p>
           </div>
 
@@ -214,9 +216,9 @@ const Services = () => {
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              Improve your website's loading speed and performance. Fast
+              Improve your website&apos;s loading speed and performance. Fast
               websites enhance user experience, improve search engine rankings,
-              and in crease conversions.
+              and increase conversions.
             </p>
           </div>
 
