@@ -1,0 +1,19 @@
+/* styles/Services.module.css */
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    margin: auto; /* Center align the container */
+    padding-bottom: calc(331 / 455 * 100%); /* Maintain aspect ratio: (height / width * 100%) */
+  }
+  
+  .imageWrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container */
+    border-radius: 8px; /* Optional: Rounded corners */
+  }
+  
