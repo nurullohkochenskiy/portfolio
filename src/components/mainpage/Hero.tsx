@@ -4,6 +4,7 @@ import LottieAnimation from "./hero/Lottieanimation";
 import { useShowContentStore } from "@/store/showContentStore";
 import { motion } from "framer-motion";
 import Scrollanimation from "./hero/Scrollanimation";
+import useLangStore from "@/store/langStore";
 
 const containerVariants2 = {
   hidden: {},
@@ -38,11 +39,37 @@ const Hero = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
   const showContent = useShowContentStore((state) => state.showContent);
 
+  //!Lang
+  const { language } = useLangStore();
+  const translations = {
+    en: {
+      title: {
+        hello: "Hello, I am",
+        myname: "Nurulloh",
+      },
+      welcometext:
+        "I am a frontend developer. I help you build, enhance and manage your website for the best user experience.",
+      scroll: "Scroll down",
+    },
+    uz: {
+      title: {
+        hello: "Salom, men",
+        myname: "Nurulloh",
+      },
+      welcometext:
+        "Men frontend dasturchiman. Men sizga eng yaxshi foydalanuvchi tasuroti uchun saytingizni qurish, yaxshilash va boshqarishga yordam beraman",
+      scroll: "Pastga",
+    },
+  };
+  const t = translations[language];
+
+  //!Lang end
+
   useEffect(() => {
     if (animationComplete) {
       const timer = setTimeout(() => {
         setShowContent(true);
-      }, 1000); // Delay of 1 second
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [animationComplete, setShowContent]);
@@ -92,7 +119,7 @@ const Hero = () => {
           >
             <div className="overflow-hidden">
               <motion.span variants={itemVariants} className="inline-block">
-                Hello, I am
+                {t.title.hello}
               </motion.span>
             </div>
             <div className="overflow-hidden">
@@ -100,7 +127,7 @@ const Hero = () => {
                 variants={itemVariants}
                 className="inline-block text-green-500"
               >
-                Nurulloh
+                {t.title.myname}
               </motion.span>
             </div>
           </motion.div>
@@ -112,9 +139,7 @@ const Hero = () => {
             variants={containerVariants2}
           >
             <motion.h2 className="mt-4 text-slate-700 md:w-[70%] lg:w-full text-[20px] tracking-[-0.5px] leading-[20px] font-medium lg:text-[50px] lg:tracking-[-1.296px] lg:leading-[44px]">
-              {splitText(
-                "I am a frontend developer. I help you build, enhance and manage your website for the best user experience."
-              )}
+              {splitText(t.welcometext)}
             </motion.h2>
           </motion.div>
         </div>
@@ -125,7 +150,7 @@ const Hero = () => {
           className="hidden md:flex  pb-[25px] justify-end items-center"
         >
           <span className="text-[2vw] leading-[2.5vw]  lg:text-[1.5vw] lg:leading-[1.66667vw]">
-            [ Scroll down ]
+            [ {t.scroll} ]
           </span>{" "}
           <Scrollanimation />
         </motion.div>

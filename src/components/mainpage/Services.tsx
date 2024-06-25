@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../../styles/Services.module.css";
 import { useShowContentStore } from "@/store/showContentStore";
 import { animate, motion } from "framer-motion";
+import useLangStore from "@/store/langStore";
 
 const fadeInAnimationVariants = {
   initial: {
@@ -18,7 +19,113 @@ const fadeInAnimationVariants = {
 
 const Services = () => {
   const showContent = useShowContentStore((state) => state.showContent);
+  //!Lang
+  const { language } = useLangStore();
+  const translations = {
+    en: {
+      title: "What can I give you?",
+      services: {
+        development: {
+          title: "Website Development",
+          description:
+            "I can create custom websites from the ground up, tailored to your unique needs",
+        },
+        enhancement: {
+          title: "Website Enhancement",
+          description:
+            "I can transform your existing website with modern enhancements.",
+        },
+        design: {
+          title: "UI/UX Design",
+          description:
+            "I can create visually appealing and user-friendly designs for your website",
+        },
+        api: {
+          title: "API Integration",
+          description:
+            "I can integrate third-party APIs to enhance your website's functionality, providing features like social media integration, payment processing, and more.",
+        },
+        responsive: {
+          title: "Responsive Design",
+          description:
+            "I can ensure your website is optimized for all devices and screen sizes.",
+        },
+        bugfix: {
+          title: "Bug Fixes and Troubleshooting",
+          description:
+            "I can identify and fix bugs, ensuring your website runs smoothly.",
+        },
+        optimization: {
+          title: "Performance Optimization",
+          description:
+            "I can optimize your website's performance, ensuring fast loading times and improved user experience",
+        },
+        maintenance: {
+          title: "Maintenance and Support",
+          description:
+            "I can provide ongoing support and maintenance to ensure your website remains up-to-date, secure, and functioning optimally.",
+        },
+        crossbrowser: {
+          title: "Cross-Browser Compatibility",
+          description:
+            "I can ensure your website works flawlessly with all major browsers and versions.",
+        },
+      },
+    },
+    uz: {
+      title: "Sizga nima bera olaman?",
+      services: {
+        development: {
+          title: "Veb-sayt yaratish",
+          description:
+            "Talablaringizga javob beradigan veb-saytni 0 dan yasay olaman",
+        },
+        enhancement: {
+          title: "Veb-sayt kuchaytirish",
+          description:
+            "O'zingizda mavjud veb-saytni zamonaviy yaxshilanishlar bilan o'zgartira olaman.",
+        },
+        design: {
+          title: "UI/UX Dizayn",
+          description:
+            "Veb-saytingiz uchun chiroyli ko'rinishdagi foydalanuvchiga yoqadigan dizaynni yasay olaman",
+        },
+        api: {
+          title: "API Integratsiya",
+          description:
+            "Men veb-saytingiz funksiyalarini yaxshilash, ijtimoiy media integratsiyasi, to‘lovlarni qayta ishlash va boshqalar kabi xususiyatlarni taqdim etish uchun uchinchi tomon API-larini birlashtira olaman.",
+        },
+        responsive: {
+          title: "Responsiv dizayn",
+          description:
+            "Veb-saytingiz barcha qurilma va ekran o'lchamlariga mos kelishini taminlay olaman.",
+        },
+        bugfix: {
+          title: "Xatolarni topish and bartaraf qilish",
+          description:
+            "Veb-saytingiz ravon ishlashi uchun xatoliklarni topib, ularni tuzata olaman",
+        },
+        optimization: {
+          title: "Ishlashni optimallashtirish",
+          description:
+            "Tezkor yuklash va yuqori foydalanuvchi tasurotiga erishish uchun, veb-sayt ishlash sifatini optimallashtira olaman",
+        },
+        maintenance: {
+          title: "Qollab-quvvatlash va yordam",
+          description:
+            "Veb-sayt har doim yangilanib turishi, xavfsiz bo'lishi va optimal ishlashi uchun yordam bera olaman.",
+        },
+        crossbrowser: {
+          title: "Brauzerlar o'rtasidagi muvofiqlik",
+          description:
+            "Sizning veb-saytingiz barcha asosiy brauzerlar va versiyalar bilan mukammal ishlashini ta'minlay olaman",
+        },
+      },
+    },
+  };
+  const t = translations[language];
 
+  //!Lang end
   return (
     <section id="services" className="flex flex-col items-center">
       <motion.h2
@@ -28,7 +135,7 @@ const Services = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="py-4 text-[24px] text-yellow-500"
       >
-        <span>What can I give you?</span>
+        <span>{t.title}</span>
       </motion.h2>
       <div className="w-full flex flex-col items-center mx-auto md:grid md:grid-cols-3  md:p-16 gap-4">
         <motion.div
@@ -40,12 +147,13 @@ const Services = () => {
           className="w-[90%] p-[5%] border border-black rounded-2xl"
         >
           <div className="min-h-[48px]">
-            <h3 className="text-[16px] font-semibold">Website Development</h3>
+            <h3 className="text-[16px] font-semibold">
+              {t.services.development.title}
+            </h3>
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              Create custom websites from the ground up, tailored to your unique
-              needs
+              {t.services.development.description}
             </p>
           </div>
           <div className={styles.imageWrapper}>
@@ -67,11 +175,13 @@ const Services = () => {
           className="w-[90%] p-[5%] border border-black rounded-2xl"
         >
           <div className="min-h-[48px]">
-            <h3 className="text-[16px] font-semibold">Website Enhancement</h3>
+            <h3 className="text-[16px] font-semibold">
+              {t.services.enhancement.title}
+            </h3>
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              Transform your existing website with modern enhancements.
+              {t.services.enhancement.description}
             </p>
           </div>
 
@@ -94,13 +204,13 @@ const Services = () => {
           className="w-[90%] p-[5%] border border-black rounded-2xl"
         >
           <div className="min-h-[48px]">
-            <h3 className="text-[16px] font-semibold">UI/UX Design</h3>
+            <h3 className="text-[16px] font-semibold">
+              {t.services.design.title}
+            </h3>
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              User-friendly interfaces that provide an engaging and intuitive
-              experience for your visitors, ensuring they stay longer and return
-              frequently.
+              {t.services.design.description}
             </p>
           </div>
 
@@ -123,13 +233,13 @@ const Services = () => {
           className="w-[90%] p-[5%] border border-black rounded-2xl"
         >
           <div className="min-h-[48px]">
-            <h3 className="text-[16px] font-semibold">API Integration</h3>
+            <h3 className="text-[16px] font-semibold">
+              {t.services.api.title}
+            </h3>
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              Integrate third-party APIs to enhance your website&apos;s
-              functionality, providing features like social media integration,
-              payment processing, and more.
+              {t.services.api.description}
             </p>
           </div>
 
@@ -152,12 +262,13 @@ const Services = () => {
           className="w-[90%] p-[5%] border border-black rounded-2xl"
         >
           <div className="min-h-[48px]">
-            <h3 className="text-[16px] font-semibold">Responsive Design</h3>
+            <h3 className="text-[16px] font-semibold">
+              {t.services.responsive.title}
+            </h3>
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              Specialize in creating responsive designs that provide a seamless
-              experience on any device.
+              {t.services.responsive.description}
             </p>
           </div>
 
@@ -181,13 +292,12 @@ const Services = () => {
         >
           <div className="min-h-[48px]">
             <h3 className="text-[16px] font-semibold">
-              Bug Fixes and Troubleshooting
+              {t.services.bugfix.title}
             </h3>
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              Comprehensive bug fixing and troubleshooting services to ensure
-              your website runs smoothly.
+              {t.services.bugfix.description}
             </p>
           </div>
 
@@ -211,14 +321,12 @@ const Services = () => {
         >
           <div className="min-h-[48px]">
             <h3 className="text-[16px] font-semibold">
-              Performance Optimization
+              {t.services.optimization.title}
             </h3>
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              Improve your website&apos;s loading speed and performance. Fast
-              websites enhance user experience, improve search engine rankings,
-              and increase conversions.
+              {t.services.optimization.description}
             </p>
           </div>
 
@@ -242,13 +350,12 @@ const Services = () => {
         >
           <div className="min-h-[48px]">
             <h3 className="text-[16px] font-semibold">
-              Maintenance and Support
+              {t.services.maintenance.title}
             </h3>
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              Ongoing support and maintenance to ensure your website remains
-              up-to-date, secure, and functioning optimally.
+              {t.services.maintenance.description}
             </p>
           </div>
 
@@ -272,13 +379,12 @@ const Services = () => {
         >
           <div className="min-h-[48px]">
             <h3 className="text-[16px] font-semibold">
-              Cross-Browser Compatibility
+              {t.services.crossbrowser.title}
             </h3>
           </div>
           <div className="pt-[2%] pb-[5%] min-h-[185px] max-h-[185px]">
             <p className="pt-[2%] pb-[5%] text-stone-500">
-              Your website works flawlessly across all major browsers, providing
-              a consistent experience for all users.
+              {t.services.crossbrowser.description}
             </p>
           </div>
 

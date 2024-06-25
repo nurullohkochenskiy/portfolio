@@ -1,13 +1,28 @@
-
 "use client";
 import React from "react";
 import { useShowContentStore } from "@/store/showContentStore";
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
+import useLangStore from "@/store/langStore";
 
 const Header: React.FC = () => {
   const showContent = useShowContentStore((state) => state.showContent);
-
+  const { language, setLanguage } = useLangStore();
+  const translations = {
+    en: {
+      services: "Services,",
+      works: "Works,",
+      about: "About",
+      contact: "Contact me",
+    },
+    uz: {
+      services: "Xizmatlar,",
+      works: "Ishlar,",
+      about: "Men xaqimda",
+      contact: "Aloqaga chiqish",
+    },
+  };
+  const t = translations[language];
   return (
     <div className="relative">
       <motion.header
@@ -26,7 +41,7 @@ const Header: React.FC = () => {
               duration={300}
               className="underline-hover cursor-pointer"
             >
-              Services,
+             {t.services}
             </Link>
             <Link
               to="works"
@@ -34,7 +49,7 @@ const Header: React.FC = () => {
               duration={500}
               className="underline-hover cursor-pointer"
             >
-              Works,
+              {t.works}
             </Link>
             <Link
               to="about"
@@ -42,12 +57,27 @@ const Header: React.FC = () => {
               duration={700}
               className="underline-hover cursor-pointer"
             >
-              About
+              {t.about}
             </Link>
           </div>
           <div>
-            <button className="underline-hover">EN</button>|
-            <button className="underline-hover">UZ</button>
+            <button
+              onClick={() => setLanguage("en")}
+              className={
+                language == "en" ? "underline_active" : "underline-hover"
+              }
+            >
+              EN
+            </button>
+            |
+            <button
+              onClick={() => setLanguage("uz")}
+              className={
+                language == "uz" ? "underline_active" : "underline-hover"
+              }
+            >
+              UZ
+            </button>
           </div>
 
           <Link
@@ -56,7 +86,7 @@ const Header: React.FC = () => {
             duration={900}
             className="underline-hover hidden lg:block cursor-pointer"
           >
-            Contact me
+            {t.contact}
           </Link>
         </div>
       </motion.header>
