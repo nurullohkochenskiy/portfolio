@@ -66,8 +66,8 @@ const Contact = () => {
             />
           </div>
           <span>
-            <a href="mailto:amirmamatovn1551@gmail.com">
-              amirmamatovn1551@gmail.com
+            <a href="mailto:nurullohdev@mail.ru">
+              nurullohdev@mail.ru
             </a>
           </span>
         </h4>
@@ -83,7 +83,7 @@ const Contact = () => {
             />
           </div>
           <span>
-            <a href="tel:+998971110814">+998(97)111-08-14</a>
+            <a href="tel:+998998820814">+998(99)882-08-14</a>
           </span>
         </h4>
       </motion.div>
